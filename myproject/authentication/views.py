@@ -33,6 +33,21 @@ def signup(request):
 
 
 def signin(request):
+
+    if request.method == 'post':
+        username = request.POST['username']
+        pass1 = request.POST['pass1']
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            fname = user.first_name
+            return render(request, "authentication/index.html",{'fname': fname})
+        else:
+            messages.error(request, "Bad Credentials!") 
+            return redirect('home')   
+
     return render(request, "authentication/signin.html")
 
 

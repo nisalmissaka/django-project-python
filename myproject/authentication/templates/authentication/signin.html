@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Signin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
+    <h3>Sign Up</h3>
 
-<h1>Signin Page</h1>
+    <form action="/signin" method="post">
+     {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter Your Username" required>
+        <br>
 
+        <label for="">Password</label>
+        <input type="password" id="pass1" name="fname" placeholder="Enter Your Password" required>
+        <br>
+        
+        <button type="submit">Sign In</button>
+
+    </form>
+    <script src="" async defer></script>
 </body>
 </html>
