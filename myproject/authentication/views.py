@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 def home(request):
     return render(request, "authentication/index.html")
@@ -34,11 +35,11 @@ def signup(request):
 
 def signin(request):
 
-    if request.method == 'post':
+    if request.method == 'POST':
         username = request.POST['username']
         pass1 = request.POST['pass1']
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(username=username, password=pass1)
 
         if user is not None:
             login(request, user)
